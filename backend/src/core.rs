@@ -93,6 +93,7 @@ pub fn initialize() -> Result<Arc<Mutex<meter::Meter>>, InitializationError> {
                         continue;
                     }
                     if let Ok(ref mut meter) = cloned_meter.lock() {
+                        debug!("Raw payload: {:?}", &packet.payload);
                         let game_messages = photon
                             .decode(&packet.payload)
                             .into_iter()
